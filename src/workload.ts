@@ -104,7 +104,7 @@ const results: AudienceOutputs[] = audiences.map((a) => {
     configuration: {
       ingress: {
         external: true,
-        targetPort: 80,
+        targetPort: 8080,
         transport: "auto",
       },
     },
@@ -114,9 +114,16 @@ const results: AudienceOutputs[] = audiences.map((a) => {
           name: "web",
           image: "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
           resources: { cpu: 0.25, memory: "0.5Gi" },
+          env: [
+            {
+              name: "APP_ID",
+              value: a.displayName,
+            },
+          ],
         },
       ],
       scale: { minReplicas: 0, maxReplicas: 1 },
+      
     },
     tags: {
       audienceEmail: a.email,
@@ -150,22 +157,6 @@ export const audienceResources = results.map((r) => ({
   containerAppName: r.containerAppName,
   keyVaultName: r.keyVaultName,
 }));
-
-
-// // export audiences for access control
-// export const audiencesList = audiences;
-
-// // export shared resources for access control
-// export const sharedKeyVaultId = sharedKv.id;
-
-// // Map each audience email -> Container App resource ID
-// export const containerAppIdsByEmail = results.reduce(
-//   (acc, r) => {
-//     acc[r.email] = (r as any).appId; // we’ll set appId below
-//     return acc;
-//   },
-//   {} as Record<string, pulumi.Output<string>>
-// );
 
 export const resourceGroupId = rg.id;
 export const containerEnvId = caEnv.id;
