@@ -88,6 +88,7 @@ type AudienceOutputs = {
   displayName: string;
   containerAppName: pulumi.Output<string>;
   keyVaultName: pulumi.Output<string>;
+  appId: pulumi.Output<string>;
 };
 
 const results: AudienceOutputs[] = audiences.map((a) => {
@@ -151,17 +152,26 @@ export const audienceResources = results.map((r) => ({
 }));
 
 
-// export audiences for access control
-export const audiencesList = audiences;
+// // export audiences for access control
+// export const audiencesList = audiences;
 
-// export shared resources for access control
+// // export shared resources for access control
+// export const sharedKeyVaultId = sharedKv.id;
+
+// // Map each audience email -> Container App resource ID
+// export const containerAppIdsByEmail = results.reduce(
+//   (acc, r) => {
+//     acc[r.email] = (r as any).appId; // we’ll set appId below
+//     return acc;
+//   },
+//   {} as Record<string, pulumi.Output<string>>
+// );
+
+export const audiencesList = audiences;
 export const sharedKeyVaultId = sharedKv.id;
 
-// Map each audience email -> Container App resource ID
-export const containerAppIdsByEmail = results.reduce(
-  (acc, r) => {
-    acc[r.email] = (r as any).appId; // we’ll set appId below
-    return acc;
-  },
-  {} as Record<string, pulumi.Output<string>>
-);
+// email -> Container App resource id
+export const containerAppIdsByEmail = results.reduce((acc, r) => {
+  acc[r.email] = r.appId; // make sure results includes appId: app.id
+  return acc;
+}, {} as Record<string, pulumi.Output<string>>);
