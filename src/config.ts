@@ -9,7 +9,8 @@ export const sharedKeyVaultName = "kv-ntotr-shared";
 
 // Audience list as const (array of objects)
 export const audiences = [
-  { email: "alice@example.com", displayName: "Alice" },
-  { email: "bob@example.com", displayName: "Bob W." },
-  { email: "charlie@example.com", displayName: "Charlie-DevOps" },
+  // { email: "alice@example.com", displayName: "Alice" },
+  // { email: "bob@example.com", displayName: "Bob W." },
+  // { email: "charlie@example.com", displayName: "Charlie-DevOps" },
+    { email: "mildrmtz@gmail.com", displayName: "mildr" },
 ] as const;

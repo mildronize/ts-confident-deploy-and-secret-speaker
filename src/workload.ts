@@ -167,6 +167,9 @@ export const audienceResources = results.map((r) => ({
 //   {} as Record<string, pulumi.Output<string>>
 // );
 
+export const resourceGroupId = rg.id;
+export const containerEnvId = caEnv.id;
+
 export const audiencesList = audiences;
 export const sharedKeyVaultId = sharedKv.id;
 
