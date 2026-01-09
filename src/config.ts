@@ -11,5 +11,5 @@ export const sharedKeyVaultName = "kv-ntotr-shared";
 export const audiences = [
   { email: "alice@example.com", displayName: "Alice" },
   { email: "bob@example.com", displayName: "Bob W." },
-  // { email: "charlie@example.com", displayName: "Charlie-DevOps" },
+  { email: "charlie@example.com", displayName: "Charlie-DevOps" },
 ] as const;
