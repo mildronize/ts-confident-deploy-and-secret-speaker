@@ -1,21 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as azure from "@pulumi/azure-native";
+import { location, audiences, containerEnvName, resourceGroupName, sharedKeyVaultName } from "./config";
 
-// -------------------------
-// 1) Inputs / constants
-// -------------------------
-const location = "southeastasia";
-
-const resourceGroupName = "rg-northern-tech-workshop";
-const containerEnvName = "env-ntotr-shared";
-const sharedKeyVaultName = "kv-ntotr-shared";
-
-// Audience list as const (array of objects)
-const audiences = [
-  { email: "alice@example.com", displayName: "Alice" },
-  { email: "bob@example.com", displayName: "Bob W." },
-  // { email: "charlie@example.com", displayName: "Charlie-DevOps" },
-] as const;
 
 // -------------------------
 // 2) Helpers
