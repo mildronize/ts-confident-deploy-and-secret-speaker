@@ -1,12 +1,12 @@
 {
-  "name": "ts-confident-deploy-and-secret-speaker",
-  "module": "index.ts",
-  "type": "module",
-  "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  }
+    "name": "ts-confident-deploy-and-secret-speaker",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^18",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@pulumi/azure-native": "^3.0.0",
+        "@pulumi/pulumi": "^3.0.0"
+    }
 }
